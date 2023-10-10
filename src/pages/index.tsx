@@ -8,6 +8,7 @@ import Model from "../components/Ring004"; // Import the generated JSX file
 function Controls() {
   const controls = useRef();
   const { camera, gl, set, size } = useThree();
+  //@ts-ignore
   useFrame(() => controls.current?.update());
 
   useEffect(() => {
@@ -24,6 +25,7 @@ function Controls() {
     set({ camera: orthoCamera });
   }, [set, size]);
 
+  //@ts-ignore
   return <OrbitControls ref={controls} args={[camera, gl.domElement]} />;
 }
 export default function Home() {
