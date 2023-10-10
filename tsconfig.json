@@ -19,7 +19,8 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
-    }
+    },
+    "noEmitOnError": false
   },
   "include": [
     ".eslintrc.cjs",
