@@ -3,7 +3,8 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import Head from "next/head";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import Model from "../components/Ring004"; // Import the generated JSX file
+import { Model as R001_01 } from "../components/R001_01";
+import { Model as R001_02 } from "../components/R001_02";
 
 function Controls() {
   const controls = useRef();
@@ -40,7 +41,13 @@ export default function Home() {
       <main className="flex h-screen min-h-screen w-full flex-col items-center justify-center bg-black">
         <Canvas className="h-full w-full">
           <ambientLight />
-          <Model scale={[modelScale, modelScale, modelScale]} />
+          <R001_01 scale={[modelScale, modelScale, modelScale]} />
+          <Environment files="./Studio-White-Soft.hdr" background={false} />
+          <Controls />
+        </Canvas>
+        <Canvas className="h-full w-full">
+          <ambientLight />
+          <R001_02 scale={[modelScale, modelScale, modelScale]} />
           <Environment files="./Studio-White-Soft.hdr" background={false} />
           <Controls />
         </Canvas>
