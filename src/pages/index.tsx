@@ -1,12 +1,14 @@
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import Head from "next/head";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Model as R001_01 } from "../components/R001_01";
 import { Model as R001_02 } from "../components/R001_02";
 
 function Controls() {
+  THREE.ColorManagement.enabled = true;
+
   const controls = useRef();
   const { camera, gl, set, size } = useThree();
   //@ts-ignore
@@ -31,6 +33,8 @@ function Controls() {
 }
 export default function Home() {
   let modelScale = 0.5;
+  const [renderer, setRenderer] = useState(null);
+
   return (
     <>
       <Head>
@@ -39,12 +43,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex h-screen min-h-screen w-full flex-col items-center justify-center bg-black">
-        <Canvas className="h-full w-full">
+        <Canvas className="h-full w-full" gl={{ preserveDrawingBuffer: true }}>
           <ambientLight />
           <R001_01 scale={[modelScale, modelScale, modelScale]} />
           <Environment files="./Studio-White-Soft.hdr" background={false} />
           <Controls />
+          <InnerComponent setRenderer={setRenderer} />
         </Canvas>
+        <CaptureButton renderer={renderer} />
         <Canvas className="h-full w-full">
           <ambientLight />
           <R001_02 scale={[modelScale, modelScale, modelScale]} />
@@ -55,3 +61,32 @@ export default function Home() {
     </>
   );
 }
+
+const InnerComponent = ({ setRenderer }) => {
+  const { gl } = useThree();
+  setRenderer(gl);
+  return null;
+};
+
+const CaptureButton = ({ renderer }) => {
+  const captureScene = () => {
+    if (!renderer) return;
+    const canvas = renderer.domElement;
+    const imgData = canvas.toDataURL("image/png");
+    const a = document.createElement("a");
+    a.href = imgData;
+    a.download = "screenshot.png";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
+  return (
+    <button
+      style={{ color: "white", backgroundColor: "black" }}
+      onClick={captureScene}
+    >
+      Capture
+    </button>
+  );
+};
