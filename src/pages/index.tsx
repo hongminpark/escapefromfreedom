@@ -48,9 +48,9 @@ export default function Home() {
           <R001_01 scale={[modelScale, modelScale, modelScale]} />
           <Environment files="./Studio-White-Soft.hdr" background={false} />
           <Controls />
-          <InnerComponent setRenderer={setRenderer} />
+          {/* <InnerComponent setRenderer={setRenderer} /> */}
         </Canvas>
-        <CaptureButton renderer={renderer} />
+        {/* <CaptureButton renderer={renderer} /> */}
         <Canvas className="h-full w-full">
           <ambientLight />
           <R001_02 scale={[modelScale, modelScale, modelScale]} />
@@ -62,31 +62,31 @@ export default function Home() {
   );
 }
 
-const InnerComponent = ({ setRenderer }) => {
-  const { gl } = useThree();
-  setRenderer(gl);
-  return null;
-};
+// const InnerComponent = ({ setRenderer }) => {
+//   const { gl } = useThree();
+//   setRenderer(gl);
+//   return null;
+// };
 
-const CaptureButton = ({ renderer }) => {
-  const captureScene = () => {
-    if (!renderer) return;
-    const canvas = renderer.domElement;
-    const imgData = canvas.toDataURL("image/png");
-    const a = document.createElement("a");
-    a.href = imgData;
-    a.download = "screenshot.png";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  };
+// const CaptureButton = ({ renderer }) => {
+//   const captureScene = () => {
+//     if (!renderer) return;
+//     const canvas = renderer.domElement;
+//     const imgData = canvas.toDataURL("image/png");
+//     const a = document.createElement("a");
+//     a.href = imgData;
+//     a.download = "screenshot.png";
+//     document.body.appendChild(a);
+//     a.click();
+//     document.body.removeChild(a);
+//   };
 
-  return (
-    <button
-      style={{ color: "white", backgroundColor: "black" }}
-      onClick={captureScene}
-    >
-      Capture
-    </button>
-  );
-};
+//   return (
+//     <button
+//       style={{ color: "white", backgroundColor: "black" }}
+//       onClick={captureScene}
+//     >
+//       Capture
+//     </button>
+//   );
+// };
