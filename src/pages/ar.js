@@ -11,7 +11,7 @@ export default function ModelViewerPage() {
       </Head>
       <div>
         <model-viewer
-          src="/cylinder_table.glb"
+          src="/cylinder_table_materials_jpg.glb"
           ar
           ar-scale="auto"
           camera-controls
