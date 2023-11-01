@@ -3,10 +3,10 @@ import { SetStateAction, useEffect, useRef, useState } from "react";
 const CylinderTable = () => {
   const modelViewerRef = useRef(null);
   const setModelVariant = (colorName: SetStateAction<string>) => {
-    if (modelViewerRef.current) {
-      // @ts-ignore
-      modelViewerRef.current.variantName = colorName;
-    }
+    // if (modelViewerRef.current) {
+    //   // @ts-ignore
+    //   modelViewerRef.current.variantName = colorName;
+    // }
   };
 
   useEffect(() => {
@@ -47,7 +47,8 @@ const CylinderTable = () => {
         <div style={{ display: "flex" }}>
           <model-viewer
             ref={modelViewerRef}
-            src="/cylinder_table_materials_jpg.glb"
+            // src="/cylinder_table_materials_jpg.glb"
+            src="/cylinder_table_texture4.glb"
             ar
             ar-scale="auto"
             camera-controls
