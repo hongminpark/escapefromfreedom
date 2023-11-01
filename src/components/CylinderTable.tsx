@@ -60,16 +60,7 @@ const CylinderTable = () => {
               display: "block",
               margin: "0 auto",
             }}
-          >
-            <button
-              slot="ar-button"
-              style={{
-                position: "absolute",
-                top: "16px",
-                right: "16px",
-              }}
-            ></button>
-          </model-viewer>
+          ></model-viewer>
         </div>
         <div className="flex justify-center space-x-2 py-4">
           {colors.map((color) => (
