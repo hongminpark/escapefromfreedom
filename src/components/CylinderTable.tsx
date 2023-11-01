@@ -47,7 +47,7 @@ const CylinderTable = () => {
         <div style={{ display: "flex" }}>
           <model-viewer
             ref={modelViewerRef}
-            src="/cylinder_table_white.glb"
+            src="/cylinder_table_02.glb"
             ar
             ar-scale="auto"
             camera-controls
