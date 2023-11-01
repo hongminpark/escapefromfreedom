@@ -2,8 +2,9 @@ import { SetStateAction, useEffect, useRef, useState } from "react";
 
 const CylinderTable = () => {
   const modelViewerRef = useRef(null);
-  const setModelVariant = (colorName) => {
+  const setModelVariant = (colorName: SetStateAction<string>) => {
     if (modelViewerRef.current) {
+      // @ts-ignore
       modelViewerRef.current.variantName = colorName;
     }
   };
@@ -23,6 +24,7 @@ const CylinderTable = () => {
     { code: "#10CA11", name: "green" },
   ];
 
+  // @ts-ignore
   const [activeColor, setActiveColor] = useState(colors[2].name);
 
   const handleColorChange = (colorName: SetStateAction<string>) => {
