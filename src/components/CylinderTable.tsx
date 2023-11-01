@@ -18,14 +18,14 @@ const CylinderTable = () => {
   }, []);
 
   const colors = [
-    { code: "#E5D7BD", name: "white" },
+    { code: "#E1E0E1", name: "white" },
     { code: "#B5B1A6", name: "grey" },
     { code: "#FEBA01", name: "yellow" },
     { code: "#10CA11", name: "green" },
   ];
 
   // @ts-ignore
-  const [activeColor, setActiveColor] = useState(colors[2].name);
+  const [activeColor, setActiveColor] = useState(colors[0].name);
 
   const handleColorChange = (colorName: SetStateAction<string>) => {
     setActiveColor(colorName);
@@ -70,9 +70,10 @@ const CylinderTable = () => {
               onClick={() => handleColorChange(color.name)}
             >
               <div
+                style={{ backgroundColor: color.code }}
                 className={`h-5 w-5 rounded-full ${
                   activeColor === color.name ? "border-2 border-black" : ""
-                } bg-[${color.code}]`}
+                }`}
               ></div>
             </button>
           ))}
